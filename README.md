@@ -1,7 +1,7 @@
 
 完美兼容 ie >= 8;
 
-本 demo 依赖 webpack + react + react-router-dom + antd ;
+本 demo 依赖 webpack + react + react-router-dom + antd + less;
 
 	自己配时需注意各依赖的版本问题 ！
 
