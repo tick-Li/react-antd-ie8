@@ -31,8 +31,8 @@ const baseConfig = {
 		loaders: [
 			{
 				test: /\.(jsx|js)$/,
-				loaders: ['babel-loader?cacheDirectory'],
-				//loaders: [ 'happypack/loader?id=babel'],
+				//loaders: ['babel-loader?cacheDirectory'],
+				loaders: [ 'happypack/loader?id=babel'],
 				include: path.join(__dirname, 'src')
 			},
 			{
@@ -41,8 +41,8 @@ const baseConfig = {
 			},
 			{
 				test: /\.(css|less)$/,
-				loaders: ['style-loader',extractLESS.extract(['css-loader','less-loader'])]
-				//loaders: [ 'happypack/loader?id=style']
+				//loaders: ['style-loader',extractLESS.extract(['css-loader','less-loader'])]
+				loaders: [ 'happypack/loader?id=style']
 			}
 		]
 	},
@@ -53,16 +53,16 @@ const baseConfig = {
 		noInfo: true
 	},
 	plugins: [
-		//new HappyPack({
-		//	id: 'babel',
-		//	loaders: ['babel-loader?cacheDirectory'],
-		//	threads: 4,
-		//}),
-		//new HappyPack({
-		//	id: 'style',
-		//	loaders: ['style-loader',extractLESS.extract(['css-loader','less-loader'])],
-		//	threads: 4,
-		///}),
+		new HappyPack({
+			id: 'babel',
+			loaders: ['babel-loader?cacheDirectory'],
+			threads: 4,
+		}),
+		new HappyPack({
+			id: 'style',
+			loaders: ['style-loader',extractLESS.extract(['css-loader','less-loader'])],
+			threads: 4,
+		}),
 		new ProgressBarPlugin(),
 		extractLESS,
 		new es3ifyWebpackPlugin(),
