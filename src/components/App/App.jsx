@@ -2,7 +2,6 @@ import React from 'react';
 import Nav from 'components/Nav/Nav';
 import GetRouter from 'router/router';
 
-
 export default class App extends React.Component {
     render() {
         return (

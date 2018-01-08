@@ -3,9 +3,9 @@ const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const vendors = [
-    'react',
-    'react-dom',
-    'antd',
+	'react',
+	'react-dom',
+	'antd',
 	'react-router-dom'
 ];
 

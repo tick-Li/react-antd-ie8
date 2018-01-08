@@ -97,7 +97,8 @@ const baseConfig = {
 		alias: {
 			components: path.join(__dirname, 'src/components'),
 			router: path.join(__dirname, 'src/router'),
-			img: path.join(__dirname, 'src/images')
+			img: path.join(__dirname, 'src/images'),
+			plugins: path.join(__dirname, 'src/plugins')
 		}
 	}
 }

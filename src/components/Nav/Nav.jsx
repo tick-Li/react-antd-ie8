@@ -7,12 +7,12 @@ import './Nav.less';
 export default class GetRouter extends React.Component {
 	render() {
 		return (
-			<header>
+			<div className="header">
 				<ul>
 					<li><NavLink to="/" replace><Button type="primary">Home</Button></NavLink></li>
 					<li><NavLink to="/page" replace><Button type="primary">Page</Button></NavLink></li>
 				</ul>
-			</header>
+			</div>
 		)
 	}
 };
