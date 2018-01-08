@@ -11,7 +11,7 @@
 
 	npm run dev (开发模式构建)
 
-	npm start (运行项目)【注意：在第一次执行该命令前需先构建一次】
+	npm start (运行项目)
 
 	npm run dll (公共依赖模块打包以提高编译速度)【生成的文件在 src/vendor 下，如有则不需执行该命令】
 
