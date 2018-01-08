@@ -75,7 +75,7 @@ const baseConfig = {
 			inject: true
 		}),
 		new webpack.DllReferencePlugin({
-			context: __dirname,
+			context: path.join(__dirname, "src/index.html"),
 			manifest: require('./src/vendor/manifest.json')
 		}),
 		new copyWebpackPlugin([{
@@ -85,10 +85,6 @@ const baseConfig = {
 		new copyWebpackPlugin([{
 			from: path.join(__dirname, './src/favicon.ico'),
 			to: path.join(__dirname, './')
-		}]),
-		new copyWebpackPlugin([{
-			from: path.join(__dirname, './src/vendor'),
-			to: path.join(__dirname, './vendor')
 		}]),
 		new BrowserSyncPlugin({
 			host: 'localhost',
