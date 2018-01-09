@@ -15,7 +15,7 @@
 
 项目结构图：
 　　　
-　　　
+　　　![](./src/images/react-antd-ie8.png)
 	
 	
 	
