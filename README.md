@@ -12,6 +12,10 @@
 	npm start (运行项目)
 
 	npm run build (生产模式构建)
+
+项目结构图：
+　　　
+　　　
 	
 	
 	
