@@ -13,7 +13,7 @@ export default class App extends React.Component {
     }
 };
 
-(() => {
+/*(() => {
 	$("body").niceScroll({
 		cursorwidth:"5px",			
 		cursorcolor: "#788087",		
@@ -25,7 +25,7 @@ export default class App extends React.Component {
 		boxzoom: true,				
 		scrollspeed:60,				
 	}); 
-})()
+})()*/
 
 
 

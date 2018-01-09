@@ -1,12 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
-const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 const es3ifyWebpackPlugin = require("es3ify-webpack-plugin");
-const copyWebpackPlugin = require('copy-webpack-plugin');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
-const HappyPack = require('happypack');
+// const HappyPack = require('happypack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractLESS = new ExtractTextPlugin('[name].css', {
 	allChunks: true,
@@ -15,12 +12,16 @@ const extractLESS = new ExtractTextPlugin('[name].css', {
 
 
 const baseConfig = {
-	devtool: 'inline-source-map',
-	entry: [
-		"es5-shim",
-		"es5-shim/es5-sham",
-		path.join(__dirname, "src/index.js")
-	],
+	entry: {
+		main: path.join(__dirname, "src/index.js"),
+		commons: [
+			"es5-shim",
+			"es5-shim/es5-sham",
+			'react',
+			'react-dom',
+			'react-router-dom'
+		]
+	},
 	output: {
 		path: path.join(__dirname, "./dist"),
 		filename: '[name].js',
@@ -33,63 +34,42 @@ const baseConfig = {
 		}],
 		loaders: [{
 			test: /\.(jsx|js)$/,
-			loaders: ['happypack/loader?id=babel'],
+			// loaders: ['happypack/loader?id=babel'],
+			loaders: ['babel-loader?cacheDirectory'],
 			include: path.join(__dirname, 'src')
 		}, {
 			test: /\.(png|jpg|gif)$/,
 			loader: 'url-loader?limit=8192&name=images/[hash:5].[name].[ext]'
 		}, {
 			test: /\.(css|less)$/,
-			loaders: ['happypack/loader?id=style']
+			// loaders: ['happypack/loader?id=style']
+			loaders: ['style-loader', extractLESS.extract(['css-loader', 'less-loader'])]
 		}]
-	},
-	devServer: {
-		contentBase: path.join(__dirname, "./dist"),
-		historyApiFallback: true,
-		//stats: "errors-only",
-		noInfo: true
 	},
 	plugins: [
 		new CommonsChunkPlugin({
-			name: "chunk",
-			filename: "chunk.js",
-			minChunks: 2,
-			chunks: ["main", "home", "page"]
+			name: 'commons',
+			filename: "commons.js",
+			minChunks: 2
 		}),
-		new HappyPack({
-			id: 'babel',
-			loaders: ['babel-loader?cacheDirectory'],
-			threads: 4,
-		}),
-		new HappyPack({
-			id: 'style',
-			loaders: ['style-loader', extractLESS.extract(['css-loader', 'less-loader'])],
-			threads: 4,
-		}),
-		new ProgressBarPlugin(),
+		// new HappyPack({
+		// 	id: 'babel',
+		// 	loaders: ['babel-loader?cacheDirectory'],
+		// 	threads: 4,
+		// }),
+		// new HappyPack({
+		// 	id: 'style',
+		// 	loaders: ['style-loader', extractLESS.extract(['css-loader', 'less-loader'])],
+		// 	threads: 4,
+		// }),
+		// new webpack.DllReferencePlugin({
+		// 	context: path.join(__dirname, "src/index.html"),
+		// 	manifest: require('./src/lib/manifest.json')
+		// }),
 		extractLESS,
 		new es3ifyWebpackPlugin(),
 		new htmlWebpackPlugin({
-			filename: "index.html",
 			template: path.join(__dirname, "src/index.html"),
-			inject: true
-		}),
-		new webpack.DllReferencePlugin({
-			context: path.join(__dirname, "src/index.html"),
-			manifest: require('./src/vendor/manifest.json')
-		}),
-		new copyWebpackPlugin([{
-			from: path.join(__dirname, './src/plugins'),
-			to: path.join(__dirname, './plugins')
-		}]),
-		new copyWebpackPlugin([{
-			from: path.join(__dirname, './src/favicon.ico'),
-			to: path.join(__dirname, './')
-		}]),
-		new BrowserSyncPlugin({
-			host: 'localhost',
-			port: 3000,
-			proxy: "localhost:8080"
 		})
 	],
 	resolve: {
