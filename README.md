@@ -1,9 +1,9 @@
 
-完美兼容 ie >= 8;
+兼容性 ie >= 8;
 
 本 demo 依赖 webpack + react + react-router-dom + antd + less;
 
-	自己配时需注意各依赖的版本问题 ！
+这只是一个兼容 ie8 的测试 demo 如要用于真正项目开发还需完善配置
 
 执行以下命令运行demo:
 
