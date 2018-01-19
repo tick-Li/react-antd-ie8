@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/webpack --config webpack.pro.config.js",
-    "dll": "./node_modules/.bin/webpack --config dll.config.js",
-    "start": "./node_modules/.bin/webpack-dev-server --config webpack.dev.config.js"
+    "build": "webpack -i node_modules --config webpack.pro.config.js",
+    "dll": "webpack -i node_modules --config dll.config.js",
+    "start": "webpack-dev-server -i node_modules --config webpack.dev.config.js"
   },
   "author": "tick",
   "license": "ISC",
