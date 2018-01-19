@@ -3,7 +3,7 @@
 
 本 demo 依赖 webpack + react + react-router-dom + antd + less;
 
-这只是一个兼容 ie8 的测试 demo 如要用于真正项目开发还需完善配置
+这只是一个兼容 ie8 的测试 demo 如要用于真正项目开发还需完善配置;
 
 执行以下命令运行demo:
 
