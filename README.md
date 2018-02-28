@@ -1,6 +1,4 @@
 
-期望来star … ^_^ …
-
 兼容性 ie >= 8;
 
 本 demo 依赖 webpack + react + react-router-dom + antd + less;
